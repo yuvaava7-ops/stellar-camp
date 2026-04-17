@@ -1,0 +1,487 @@
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.ads-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 1rem 0;
+}
+
+.fb-frame {
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  background: var(--color-background-primary);
+  overflow: hidden;
+}
+
+.fb-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 8px;
+}
+
+.fb-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1A5276;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.fb-page-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.fb-sponsored {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+.fb-pre-text {
+  padding: 0 14px 10px;
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.65;
+}
+
+.ad-image {
+  width: 100%;
+  background: #0D1F35;
+  padding: 22px 20px 18px;
+}
+
+.ad-image.hindi { background: #0F1F0F; }
+
+.ad-tag {
+  display: inline-block;
+  background: #E8A020;
+  color: #3D2200;
+  font-size: 9px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.scarcity-bar {
+  background: rgba(232, 60, 60, 0.15);
+  border: 0.5px solid rgba(232, 60, 60, 0.4);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scarcity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #E83C3C;
+  flex-shrink: 0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.scarcity-text {
+  font-size: 11px;
+  color: #F4A0A0;
+  line-height: 1.4;
+}
+
+.ad-headline {
+  font-size: 21px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.ad-headline span { color: #E8C840; }
+
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pillar {
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.pillar-icon {
+  font-size: 18px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.pillar-main {
+  font-size: 11px;
+  font-weight: 500;
+  color: #E8C840;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.pillar-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.3;
+}
+
+.earning-highlight {
+  background: linear-gradient(135deg, rgba(232,200,64,0.12), rgba(232,200,64,0.05));
+  border: 0.5px solid rgba(232,200,64,0.35);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.earn-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+
+.earn-amount {
+  font-size: 28px;
+  font-weight: 500;
+  color: #E8C840;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.earn-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
+
+.network-line {
+  background: rgba(39,174,96,0.12);
+  border: 0.5px solid rgba(39,174,96,0.3);
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #7DCEA0;
+  letter-spacing: 0.3px;
+}
+
+.ad-points {
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.ad-points li {
+  font-size: 11.5px;
+  color: #C8E0F0;
+  padding: 5px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.ad-points li:last-child { border-bottom: none; }
+
+.check {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #27AE60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.check::after {
+  content: '';
+  width: 4px;
+  height: 2.5px;
+  border-left: 1.5px solid white;
+  border-bottom: 1.5px solid white;
+  transform: rotate(-45deg) translateY(-0.5px);
+  display: block;
+}
+
+.ad-disclaimer {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.fb-link-bar {
+  background: var(--color-background-secondary);
+  border-top: 0.5px solid var(--color-border-tertiary);
+  padding: 10px 14px;
+}
+
+.link-domain {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.link-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.fb-cta-btn {
+  width: 100%;
+  background: #1877F2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}
+
+.fb-actions {
+  display: flex;
+  padding: 4px 14px 10px;
+  border-top: 0.5px solid var(--color-border-tertiary);
+  margin-top: 4px;
+}
+
+.fb-action {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding: 6px 0;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+}
+
+@media (max-width: 640px) {
+  .ads-container { grid-template-columns: 1fr; }
+}
+</style>
+
+<h2 class="sr-only">Revised Facebook ad mockups for Stellar Biolabs — simplified, scarcity-driven, English and Hindi versions</h2>
+
+<div style="padding: 0.5rem 0 0.25rem;">
+  <p class="section-label">Version 2 — scarcity · no numbers · pure aspiration</p>
+</div>
+
+<div class="ads-container">
+
+<div class="fb-frame">
+  <div class="fb-header">
+    <div class="fb-avatar">SBL</div>
+    <div style="flex:1;">
+      <div class="fb-page-name">Stellar Biolabs</div>
+      <div class="fb-sponsored">Sponsored · Pharma Professionals, Uttar Pradesh</div>
+    </div>
+  </div>
+
+  <div class="fb-pre-text">
+    You built the relationships. You covered the territory. You hit the targets.<br><br>
+    Someone else took the profits.<br><br>
+    <strong style="font-weight:500;">That changes now.</strong>
+  </div>
+
+  <div class="ad-image">
+    <div class="ad-tag">Stellar Partner Program · UP · Limited Slots</div>
+
+    <div class="scarcity-bar">
+      <div class="scarcity-dot"></div>
+      <div class="scarcity-text"><strong style="font-weight:500; color:#F4AAAA;">Only 6 territory slots open in UP.</strong> 3 have already been claimed this week.</div>
+    </div>
+
+    <div class="ad-headline">
+      Your network.<br>Your territory.<br><span>Your profit. Finally.</span>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🚫</span>
+        <div class="pillar-main">No Investment</div>
+        <div class="pillar-sub">Not a single rupee from your pocket</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📦</span>
+        <div class="pillar-main">No Inventory</div>
+        <div class="pillar-sub">We hold all stock. You just sell.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🧾</span>
+        <div class="pillar-main">No Overheads</div>
+        <div class="pillar-sub">Billing, dispatch, compliance — all us</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💰</span>
+        <div class="pillar-main">Just Profit</div>
+        <div class="pillar-sub">Every order goes straight to your income</div>
+      </div>
+    </div>
+
+    <div class="network-line">
+      YOUR NETWORK = YOUR INCOME. NOTHING ELSE.
+    </div>
+
+    <div class="earning-highlight">
+      <div class="earn-label">MR partners with 5–10 years experience are earning</div>
+      <div class="earn-amount">Up to ₹95,000</div>
+      <div class="earn-sub">per month · WHO-GMP certified products · Ortho, Gynae, Derma, Nutraceuticals<br>Monopoly territory · Full marketing kit supplied</div>
+    </div>
+
+    <ul class="ad-points">
+      <li><span class="check"></span>Work the same distributors and doctors you already know — just earn what you deserve</li>
+      <li><span class="check"></span>Exclusive territory rights — no one else from Stellar will work your district</li>
+      <li><span class="check"></span>Everything you need to start — samples, scheme cards, product materials — supplied on Day 1</li>
+      <li><span class="check"></span>Be your own boss. No daily reporting. No micromanagement. Just results.</li>
+    </ul>
+
+    <div class="ad-disclaimer">Conversations are completely confidential · stellarbiolabs.co.in</div>
+  </div>
+
+  <div class="fb-link-bar">
+    <div class="link-domain">stellarbiolabs.co.in</div>
+    <div class="link-title">Only 3 territory slots left in UP — find out if yours is available</div>
+    <button class="fb-cta-btn">WhatsApp Us Now</button>
+  </div>
+
+  <div class="fb-actions">
+    <div class="fb-action">Like</div>
+    <div class="fb-action">Comment</div>
+    <div class="fb-action">Share</div>
+  </div>
+</div>
+
+<div class="fb-frame">
+  <div class="fb-header">
+    <div class="fb-avatar" style="background:#1B4D1B;">SBL</div>
+    <div style="flex:1;">
+      <div class="fb-page-name">Stellar Biolabs</div>
+      <div class="fb-sponsored">Sponsored · Pharma Professionals, Uttar Pradesh</div>
+    </div>
+  </div>
+
+  <div class="fb-pre-text">
+    रिश्ते आपने बनाए। Territory आपने cover की। Targets आपने hit किए।<br><br>
+    मुनाफा किसी और ने उठाया।<br><br>
+    <strong style="font-weight:500;">अब ये बदलेगा।</strong>
+  </div>
+
+  <div class="ad-image hindi">
+    <div class="ad-tag">Stellar Partner Program · UP · Limited Slots</div>
+
+    <div class="scarcity-bar">
+      <div class="scarcity-dot"></div>
+      <div class="scarcity-text"><strong style="font-weight:500; color:#F4AAAA;">UP में सिर्फ 6 territory slots बची हैं।</strong> इस हफ्ते 3 already ले ली गई हैं।</div>
+    </div>
+
+    <div class="ad-headline">
+      आपका network.<br>आपकी territory.<br><span>आपका मुनाफा। आखिरकार।</span>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <span class="pillar-icon">🚫</span>
+        <div class="pillar-main">कोई Investment नहीं</div>
+        <div class="pillar-sub">आपकी जेब से एक रुपया नहीं</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">📦</span>
+        <div class="pillar-main">कोई Inventory नहीं</div>
+        <div class="pillar-sub">Stock हम रखते हैं। आप बस बेचो।</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🧾</span>
+        <div class="pillar-main">कोई Overhead नहीं</div>
+        <div class="pillar-sub">Billing, dispatch, compliance — सब हम</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">💰</span>
+        <div class="pillar-main">सिर्फ मुनाफा</div>
+        <div class="pillar-sub">हर order सीधा आपकी income में</div>
+      </div>
+    </div>
+
+    <div class="network-line">
+      आपका NETWORK = आपकी INCOME. बस इतना काफी है।
+    </div>
+
+    <div class="earning-highlight">
+      <div class="earn-label">5–10 साल के experience वाले MR partners कमा रहे हैं</div>
+      <div class="earn-amount">₹95,000 तक</div>
+      <div class="earn-sub">हर महीने · WHO-GMP certified products · Ortho, Gynae, Derma, Nutraceuticals<br>Monopoly territory · पूरा marketing kit Day 1 पर मिलता है</div>
+    </div>
+
+    <ul class="ad-points">
+      <li><span class="check"></span>वही distributors और doctors जिन्हें आप पहले से जानते हैं — बस अब उनसे खुद के लिए कमाओ</li>
+      <li><span class="check"></span>Exclusive territory — आपके district में Stellar का कोई और partner नहीं होगा</li>
+      <li><span class="check"></span>Samples, scheme cards, product material — Day 1 पर सब कुछ आपके पास</li>
+      <li><span class="check"></span>अपने boss खुद बनो। Daily reporting नहीं। Micromanagement नहीं। सिर्फ results।</li>
+    </ul>
+
+    <div class="ad-disclaimer">बातचीत पूरी तरह confidential · stellarbiolabs.co.in</div>
+  </div>
+
+  <div class="fb-link-bar">
+    <div class="link-domain">stellarbiolabs.co.in</div>
+    <div class="link-title">UP में सिर्फ 3 territory slots बची हैं — जानें कि आपकी available है या नहीं</div>
+    <button class="fb-cta-btn">अभी WhatsApp करें</button>
+  </div>
+
+  <div class="fb-actions">
+    <div class="fb-action">Like</div>
+    <div class="fb-action">Comment</div>
+    <div class="fb-action">Share</div>
+  </div>
+</div>
+
+</div>
